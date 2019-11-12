@@ -164,7 +164,7 @@ vv = sentinel1 \
 vvAscending = vv.filter(ee.Filter.eq('orbitProperties_pass', 'ASCENDING'))
 Ascending_antes = vvAscending.reduce(ee.Reducer.last())
 
-Map.addLayer(Ascending_antes, imageVisParam, 'composite_antes_ascending')
+Map.addLayer(Ascending_antes, imageVisParam, 'composite_antes_ascending', shown=False)
 
 vv2 = sentinel1 \
     .filter(ee.Filter.listContains('transmitterReceiverPolarisation', 'VV')) \
@@ -175,7 +175,7 @@ vvAscending2 = vv2.filter(ee.Filter.eq('orbitProperties_pass', 'ASCENDING'))
 
 Ascending_despues = vvAscending2.reduce(ee.Reducer.last())
 
-Map.addLayer(Ascending_despues, imageVisParam, 'composite_despues_ascending')
+Map.addLayer(Ascending_despues, imageVisParam, 'composite_despues_ascending', shown=False)
 
 vv3 = sentinel1 \
     .filter(ee.Filter.listContains('transmitterReceiverPolarisation', 'VV')) \
@@ -185,7 +185,7 @@ vv3 = sentinel1 \
 vvDescending = vv3.filter(ee.Filter.eq('orbitProperties_pass', 'DESCENDING'))
 Descending = vvDescending.reduce(ee.Reducer.last()) 
 
-Map.addLayer(Descending, imageVisParam, 'composite_despues_descending')
+Map.addLayer(Descending, imageVisParam, 'composite_despues_descending', shown=False)
 
 vv4 = sentinel1 \
   .filter(ee.Filter.listContains('transmitterReceiverPolarisation', 'VV')) \
@@ -195,20 +195,20 @@ vv4 = sentinel1 \
 vvDescending2 = vv4.filter(ee.Filter.eq('orbitProperties_pass', 'DESCENDING'))
 Descending_antes = vvDescending2.reduce(ee.Reducer.last())
 
-Map.addLayer(Descending_antes, imageVisParam, 'composite_antes_descending')
+Map.addLayer(Descending_antes, imageVisParam, 'composite_antes_descending', shown=False)
 
 ### mosaicos
 
-Map.addLayer(lRt8rt_toa_median, {'bands': ["B5_median", "B6_median", "B4_median"], 'min':0, 'max':1, 'gamma': 1.6}, 'LC8_TOA_posterior_enmask') # landsat TOA enmascarado
-Map.addLayer(lRt8rt_t1_median, {'bands': ["B5_median", "B6_median", "B4_median"], 'min':0, 'max':30000}, 'LC8_RT_posterior') # landsat RT sin enmascarar 
+Map.addLayer(lRt8rt_toa_median, {'bands': ["B5_median", "B6_median", "B4_median"], 'min':0, 'max':1, 'gamma': 1.6}, 'LC8_TOA_posterior_enmask', shown=False)  # landsat TOA enmascarado
+Map.addLayer(lRt8rt_t1_median, {'bands': ["B5_median", "B6_median", "B4_median"], 'min':0, 'max':30000}, 'LC8_RT_posterior', shown=False)  # landsat RT sin enmascarar
 
-Map.addLayer(lRt7rt_toa_median, {'bands': ["B4_median", "B5_median", "B3_median"], 'min':0, 'max':1, 'gamma': 1.6}, 'LE7_RT_TOA_posterior_enmask') # landsat TOA enmascarado
-Map.addLayer(lRt7rt_t1_median, {'bands': ["B4_median", "B5_median", "B3_median"], 'min':0, 'max':255, 'gamma': 1.6}, 'LE7_RT_posterior') # landsat RT sin enmascarar 
+Map.addLayer(lRt7rt_toa_median, {'bands': ["B4_median", "B5_median", "B3_median"], 'min':0, 'max':1, 'gamma': 1.6}, 'LE7_RT_TOA_posterior_enmask', shown=False)  # landsat TOA enmascarado
+Map.addLayer(lRt7rt_t1_median, {'bands': ["B4_median", "B5_median", "B3_median"], 'min':0, 'max':255, 'gamma': 1.6}, 'LE7_RT_posterior', shown=False)  # landsat RT sin enmascarar
 
-Map.addLayer(LT_previo_fusion, {'bands': ['nir', 'swir1', 'red'], 'min':0, 'max':4000, 'gamma': 1.6}, 'mediana_landsat_antes') # mediana landsat previo
+Map.addLayer(LT_previo_fusion, {'bands': ['nir', 'swir1', 'red'], 'min':0, 'max':4000, 'gamma': 1.6}, 'mediana_landsat_antes', shown=False)  # mediana landsat previo
 
-Map.addLayer(sentinel_antes_med, {'bands': ['B8', 'B11', 'B12'], 'max': 0.6, 'gamma': 1.6}, 'mediana_sentinel_antes') # mediana sentinel2 previo
-Map.addLayer(sentinel_despues_med, {'bands': ['B8', 'B11', 'B12'], 'max': 0.6, 'gamma': 1.6}, 'mediana_sentinel_despues') # mediana sentinel2 posterior
+Map.addLayer(sentinel_antes_med, {'bands': ['B8', 'B11', 'B12'], 'max': 0.6, 'gamma': 1.6}, 'mediana_sentinel_antes', shown=False)  # mediana sentinel2 previo
+Map.addLayer(sentinel_despues_med, {'bands': ['B8', 'B11', 'B12'], 'max': 0.6, 'gamma': 1.6}, 'mediana_sentinel_despues', shown=False)  # mediana sentinel2 posterior
 
 
 
